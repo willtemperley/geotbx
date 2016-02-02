@@ -1,0 +1,12 @@
+.idea/
+modules/
+target/
+generated-sources/
+*.iml
+*.ipr
+*.iws
+*.class
+*~
+
+#generated sources
+s2tbx-reader-cs/src/main/generated-sources/
