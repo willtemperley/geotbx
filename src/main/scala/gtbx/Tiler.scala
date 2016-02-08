@@ -1,11 +1,11 @@
-package s2
+package gtbx
 
 import java.awt.Dimension
 import java.awt.image.RenderedImage
 import java.io.{IOException, File}
 
 import com.vividsolutions.jts.geom._
-import  s2.shp.ShapeWriter
+import  gtbx.shp.ShapeWriter
 import com.vividsolutions.jts.io.WKTReader
 import it.jrc.GenericReaderPlugIn
 import org.esa.s2tbx.dataio.s2.{S2SpatialResolution, Sentinel2ProductReader}
@@ -66,6 +66,12 @@ object Tiler {
 
     sw.write("E:/s2-tile/tiles.shp")
   }
+
+  //TODO reprojection
+
+  //
+
+  //end TODO
 
   def getTileId(ij: (Int, Int), zoom: Int) = ij._1 + "/" + ij._2 + "/" + zoom
 

@@ -1,4 +1,4 @@
-package s2.tile; /**
+package gtbx.tile; /**
  *    Copyright (C) 2009, 2010 
  *    State of California,
  *    Department of Water Resources.

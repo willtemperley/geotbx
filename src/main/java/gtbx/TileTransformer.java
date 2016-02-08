@@ -1,4 +1,4 @@
-package s2;
+package gtbx;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;

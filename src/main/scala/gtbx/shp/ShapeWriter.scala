@@ -1,4 +1,4 @@
-package s2.shp
+package gtbx.shp
 
 import java.io.File
 import java.util
@@ -10,7 +10,7 @@ import org.geotools.data.simple.{SimpleFeatureCollection, SimpleFeatureSource, S
 import org.geotools.data.{DataUtilities, DefaultTransaction, Transaction}
 import org.geotools.feature.simple.SimpleFeatureBuilder
 import org.opengis.feature.simple.{SimpleFeature, SimpleFeatureType}
-import s2.GeomType
+import gtbx.GeomType
 
 
 /**

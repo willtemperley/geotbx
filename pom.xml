@@ -7,7 +7,7 @@
     <version>0.1-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sentinel-etl</artifactId>
+    <artifactId>geotbx</artifactId>
 
     <properties>
 
@@ -28,6 +28,11 @@
         <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-shapefile</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-geotiff</artifactId>
             <version>${geotools.version}</version>
         </dependency>
 
