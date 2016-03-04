@@ -16,10 +16,9 @@ import gtbx.GeomType
 /**
  * Store features then write them to a shapefile
  */
-//TODO move to core package
 class ShapeWriter(val geomType: GeomType.Value = GeomType.Point, val srid: Int = 4326, schemaDef: String = "description:String") {
 
-  val schema =  "the_geom:" + geomType + ":srid=" + srid + "," + schemaDef
+  val schema = "the_geom:" + geomType + ":srid=" + srid + "," + schemaDef
 
 //  val TYPE= DataUtilities.createType("Location", "the_geom:Polygon:srid=4326," + "i:Integer," + "j:Integer")
   val SIMPLE_FEATURE_TYPE: SimpleFeatureType = DataUtilities.createType("Location", schema)
@@ -55,15 +54,14 @@ class ShapeWriter(val geomType: GeomType.Value = GeomType.Point, val srid: Int =
   }
 
   @throws(classOf[Exception])
-  def write(fileLocation: String = "target/tiles.shp") {
+  def write(fileLocation: String = "temp.shp") {
 
-    println("Writing " + features.size() + " Features")
     val newFile: File = new File(fileLocation)
     val dataStoreFactory: ShapefileDataStoreFactory = new ShapefileDataStoreFactory
     val params: util.Map[String, java.io.Serializable] = new util.HashMap[String, java.io.Serializable]
 
-    println(newFile.getAbsolutePath)
-    println(newFile.getPath)
+    print("Writing " + features.size() + " features")
+    println(" to " + newFile.getAbsolutePath)
 
     params.put("create spatial index", "true")
     params.put("url", "file://" + newFile.getAbsolutePath)
@@ -74,13 +72,13 @@ class ShapeWriter(val geomType: GeomType.Value = GeomType.Point, val srid: Int =
 
     val transaction: Transaction = new DefaultTransaction("create")
     val typeName: String = newDataStore.getTypeNames()(0)
-    val featureSource: SimpleFeatureSource = newDataStore.getFeatureSource(typeName)
-    val SHAPE_TYPE: SimpleFeatureType = featureSource.getSchema
-    System.out.println("SHAPE:" + SHAPE_TYPE)
+    val featureSource = newDataStore.getFeatureSource(typeName)
+//    val SHAPE_TYPE: SimpleFeatureType = featureSource.getSchema
+//    System.out.println("SHAPE:" + SHAPE_TYPE)
 
     featureSource match {
       case featureStore: SimpleFeatureStore =>
-        val collection: SimpleFeatureCollection = new ListFeatureCollection(SIMPLE_FEATURE_TYPE, features)
+        val collection = new ListFeatureCollection(SIMPLE_FEATURE_TYPE, features)
         featureStore.setTransaction(transaction)
         try {
           featureStore.addFeatures(collection)
